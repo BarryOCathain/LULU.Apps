@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Xamarin;
 
 namespace LULU.Apps.iOS
 {
@@ -23,6 +24,9 @@ namespace LULU.Apps.iOS
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
 			global::Xamarin.Forms.Forms.Init ();
+
+            FormsMaps.Init();
+
 			LoadApplication (new LULU.Apps.App ());
 
 			return base.FinishedLaunching (app, options);

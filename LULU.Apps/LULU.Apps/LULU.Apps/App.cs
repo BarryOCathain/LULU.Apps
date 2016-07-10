@@ -1,31 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using LULU.Apps.Forms;
+using LULU.Apps.ViewModels;
+using System;
+using System.Collections;
 using Xamarin.Forms;
 
 namespace LULU.Apps
 {
-	public class App : Application
+    public class App : Application
 	{
 		public App ()
 		{
-			// The root page of your application
-			MainPage = new ContentPage {
-				Content = new StackLayout {
-					VerticalOptions = LayoutOptions.Center,
-					Children = {
-						new Label {
-							HorizontalTextAlignment = TextAlignment.Center,
-							Text = "Welcome to Xamarin Forms!"
-						}
-					}
-				}
-			};
+            // The root page of your application
 
-            TestGetStudent();
-		}
+            MainPage = new NavigationPage(new Login());
+
+            //TestGetStudent();
+        }
 
 		protected override void OnStart ()
 		{
@@ -44,9 +34,13 @@ namespace LULU.Apps
 
         private void TestGetStudent()
         {
-            StudentViewModel vm = new StudentViewModel();
+            //StudentViewModel vm = new StudentViewModel();
+            ClassViewModel cm = new ClassViewModel();
 
-            var result = vm.GetStudentByStudentNumber("123456");
+            DateTime start = DateTime.Now.AddDays(-7);
+            DateTime end = DateTime.Now.AddDays(7);
+
+            var attended = cm.GetClassesAttendedInDateRange("123456", start, end);
         }
     }
 }

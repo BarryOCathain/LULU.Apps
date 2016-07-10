@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace LULU.Apps.Droid.LULUService {
+namespace LULU.Apps.iOS.LULUService {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
