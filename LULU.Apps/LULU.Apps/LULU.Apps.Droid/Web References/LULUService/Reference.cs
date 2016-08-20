@@ -49,8 +49,8 @@ namespace LULU.Apps.Droid.LULUService {
         
         /// <remarks/>
         public StudentServiceEndpoint() {
-            this.Url = "http://ec2-52-208-225-217.eu-west-1.compute.amazonaws.com/LULU_WCF_SERVICE/LULU_W" +
-                "CF_Service.LULU_Service.svc/IStudent";
+            this.Url = "http://ec2-52-209-45-89.eu-west-1.compute.amazonaws.com/LULU.WCFService/LULU_WCF_" +
+                "Service.LULU_Service.svc/IStudent";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -410,8 +410,8 @@ namespace LULU.Apps.Droid.LULUService {
         
         /// <remarks/>
         public CampusServiceEndpoint() {
-            this.Url = "http://ec2-52-208-225-217.eu-west-1.compute.amazonaws.com/LULU_WCF_SERVICE/LULU_W" +
-                "CF_Service.LULU_Service.svc/ICampus";
+            this.Url = "http://ec2-52-209-45-89.eu-west-1.compute.amazonaws.com/LULU.WCFService/LULU_WCF_" +
+                "Service.LULU_Service.svc/ICampus";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -631,8 +631,8 @@ namespace LULU.Apps.Droid.LULUService {
         
         /// <remarks/>
         public ClassServiceEndpoint() {
-            this.Url = "http://ec2-52-208-225-217.eu-west-1.compute.amazonaws.com/LULU_WCF_SERVICE/LULU_W" +
-                "CF_Service.LULU_Service.svc/IClass";
+            this.Url = "http://ec2-52-209-45-89.eu-west-1.compute.amazonaws.com/LULU.WCFService/LULU_WCF_" +
+                "Service.LULU_Service.svc/IClass";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -1099,8 +1099,8 @@ namespace LULU.Apps.Droid.LULUService {
         
         /// <remarks/>
         public ClassRoomServiceEndpoint() {
-            this.Url = "http://ec2-52-208-225-217.eu-west-1.compute.amazonaws.com/LULU_WCF_SERVICE/LULU_W" +
-                "CF_Service.LULU_Service.svc/IClassRoom";
+            this.Url = "http://ec2-52-209-45-89.eu-west-1.compute.amazonaws.com/LULU.WCFService/LULU_WCF_" +
+                "Service.LULU_Service.svc/IClassRoom";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -1351,8 +1351,8 @@ namespace LULU.Apps.Droid.LULUService {
         
         /// <remarks/>
         public CourseServiceEndpoint() {
-            this.Url = "http://ec2-52-208-225-217.eu-west-1.compute.amazonaws.com/LULU_WCF_SERVICE/LULU_W" +
-                "CF_Service.LULU_Service.svc/ICourse";
+            this.Url = "http://ec2-52-209-45-89.eu-west-1.compute.amazonaws.com/LULU.WCFService/LULU_WCF_" +
+                "Service.LULU_Service.svc/ICourse";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -1562,8 +1562,8 @@ namespace LULU.Apps.Droid.LULUService {
         
         /// <remarks/>
         public UserServiceEndpoint() {
-            this.Url = "http://ec2-52-208-225-217.eu-west-1.compute.amazonaws.com/LULU_WCF_SERVICE/LULU_W" +
-                "CF_Service.LULU_Service.svc/IUser";
+            this.Url = "http://ec2-52-209-45-89.eu-west-1.compute.amazonaws.com/LULU.WCFService/LULU_WCF_" +
+                "Service.LULU_Service.svc/IUser";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

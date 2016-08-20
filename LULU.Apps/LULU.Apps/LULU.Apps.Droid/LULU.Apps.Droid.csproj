@@ -136,6 +136,9 @@
       <HintPath>..\..\packages\Xamarin.GooglePlayServices.Maps.29.0.0.1\lib\MonoAndroid41\Xamarin.GooglePlayServices.Maps.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Xamarin.iOS">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\Xamarin.iOS\v1.0\Xamarin.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LULUServiceReference.cs" />
@@ -182,10 +185,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://ec2-52-208-225-217.eu-west-1.compute.amazonaws.com/LULU_WCF_SERVICE/LULU_WCF_Service.LULU_Service.svc%3fwsdl">
+    <WebReferenceUrl Include="http://ec2-52-209-45-89.eu-west-1.compute.amazonaws.com/LULU.WCFService/LULU_WCF_Service.LULU_Service.svc%3fwsdl">
       <UrlBehavior>Static</UrlBehavior>
       <RelPath>Web References\LULUService\</RelPath>
-      <UpdateFromURL>http://ec2-52-208-225-217.eu-west-1.compute.amazonaws.com/LULU_WCF_SERVICE/LULU_WCF_Service.LULU_Service.svc%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://ec2-52-209-45-89.eu-west-1.compute.amazonaws.com/LULU.WCFService/LULU_WCF_Service.LULU_Service.svc%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

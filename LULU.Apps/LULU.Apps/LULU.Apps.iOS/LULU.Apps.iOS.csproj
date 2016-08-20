@@ -176,10 +176,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://ec2-52-208-225-217.eu-west-1.compute.amazonaws.com/LULU_WCF_SERVICE/LULU_WCF_Service.LULU_Service.svc%3fwsdl">
+    <WebReferenceUrl Include="http://ec2-52-209-45-89.eu-west-1.compute.amazonaws.com/LULU.WCFService/LULU_WCF_Service.LULU_Service.svc%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\LULUService\</RelPath>
-      <UpdateFromURL>http://ec2-52-208-225-217.eu-west-1.compute.amazonaws.com/LULU_WCF_SERVICE/LULU_WCF_Service.LULU_Service.svc%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://ec2-52-209-45-89.eu-west-1.compute.amazonaws.com/LULU.WCFService/LULU_WCF_Service.LULU_Service.svc%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
