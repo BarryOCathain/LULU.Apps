@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="LULU.Apps.Droid" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="LULU.Apps.Droid" android:installLocation="auto" android:versionCode="1" android:versionName="1.0">
 	<uses-sdk android:minSdkVersion="15" />
-	<application android:label="$safeprojectname$" android:icon="@drawable/Icon">
+	<application android:label="LULU" android:icon="@drawable/Icon">
 		<!--API Key for big computer-->
-		<!--<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBcT0yuU5okGJV4HGiGeRbLfnRjwp-rXGw"/>-->
-		<!--API Key fro the Surface-->
-		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAmmumj2Gj5BWMdR6HBegO6pitK1orxlkg" />
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBcT0yuU5okGJV4HGiGeRbLfnRjwp-rXGw" />
+		<!--API Key for the Surface-->
+		<!--<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAmmumj2Gj5BWMdR6HBegO6pitK1orxlkg" />-->
 	</application>
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

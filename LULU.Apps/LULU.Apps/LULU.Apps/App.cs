@@ -8,7 +8,7 @@ namespace LULU.Apps
 		public App ()
 		{
             // The root page of your application
-            MainPage = new NavigationPage(new Login());
+            MainPage = new NavigationPage(new ClassSelector());
 
             //TestGetStudent();
         }

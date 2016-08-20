@@ -1,8 +1,8 @@
 ﻿using Android.Locations;
-using LULU.Apps.Droid;
 using LULU.Model;
-using System;
+using Plugin.Geolocator;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
@@ -10,15 +10,11 @@ using Xamarin.Forms.Maps;
 
 namespace LULU.Apps.Forms
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class ClassSelector : ContentPage
     {
         //Test values
         double threshold = 50.0;
-        Position queens = new Position(54.583551, -5.9335411);
-        Position user;
+        Xamarin.Forms.Maps.Position queens = new Xamarin.Forms.Maps.Position(54.583551, -5.9335411);
 
         private Picker classDropDown;
         private Map map;
@@ -28,16 +24,14 @@ namespace LULU.Apps.Forms
         public ClassSelector()
         {
             Content = LoadControls();
-            user = GetPositionFromLocation(MainActivity.LocationManagerInstance.GetLastKnownLocation(LocationManager.NetworkProvider));
         }
 
         private StackLayout LoadControls()
         {
             classDropDown = new Picker();
 
-            map = new Map(MapSpan.FromCenterAndRadius(queens, Distance.FromMiles(0.5)));
+            map = new Map(MapSpan.FromCenterAndRadius(queens, Distance.FromMiles(0.5))) { IsShowingUser = true, };
             map.Pins.Add(new Pin() { Label = "Queens", Position = queens });
-            map.Pins.Add(new Pin() { Label = "User", Position = user });
 
             submitButton = new Button
             {
@@ -61,24 +55,51 @@ namespace LULU.Apps.Forms
             };
         }
 
-        private void SubmitButton_Clicked(object sender, System.EventArgs e)
+        private async void SubmitButton_Clicked(object sender, System.EventArgs e)
         {
-            var isValid = ValidateLocation(user, queens, threshold);
+            var isValid = await ValidateLocation(queens, threshold);
 
             errorLabel.Text = isValid ? "" : string.Format("You cannot log into the class as you are more than {0} meters from the classroom", threshold);
         }
 
-        private bool ValidateLocation(Position userLocation, Position classLocation, double threshold)
+        private async Task<bool> ValidateLocation(Xamarin.Forms.Maps.Position classLocation, double threshold)
         {
-            Point userLoc = new Point(userLocation.Latitude, userLocation.Longitude);
-            Point classLoc = new Point(classLocation.Latitude, classLocation.Longitude);
-            var dist = userLoc.Distance(classLoc)*100000;
-            return threshold >= dist;
+            return threshold >= DistanceBetween(await GetLocation(), classLocation);
         }
 
-        private Position GetPositionFromLocation(Location location)
+
+        public double DistanceBetween(Position user, Position classroom)
         {
-            return new Position(location.Latitude, location.Longitude);
+            var userLoc = new Location("user");
+            userLoc.Latitude = user.Latitude;
+            userLoc.Longitude = user.Longitude;
+
+            var classLoc = new Location("class");
+            classLoc.Latitude = classroom.Latitude;
+            classLoc.Longitude = classroom.Longitude;
+
+            var dist = userLoc.DistanceTo(classLoc);
+            return dist;
+
+            //double d = Math.Acos(
+            //   (Math.Sin(a.Latitude) * Math.Sin(b.Latitude)) +
+            //   (Math.Cos(a.Latitude) * Math.Cos(b.Latitude))
+            //   * Math.Cos(b.Longitude - a.Longitude));
+
+            //return 6378137 * d;
+        }
+        private async Task<Position> GetLocation()
+        {
+            var locator = CrossGeolocator.Current;
+            locator.DesiredAccuracy = 5;
+
+            //Emulator doesn't return a response until timeout. Use timeout of 60 secs in real world.
+#if DEBUG
+            var position = await locator.GetPositionAsync(1000);
+#else
+            var position = await locator.GetPositionAsync(60000);
+#endif
+            return new Position(position.Latitude, position.Longitude);
         }
     }
 }
