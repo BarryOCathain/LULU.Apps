@@ -49,10 +49,7 @@ namespace LULU.Apps.Forms
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label))
             };
 
-            passwordEntry = new Entry
-            {
-                IsPassword = true
-            };
+            passwordEntry = new Entry { IsPassword = true };
 
             loginButton = new Button
             {
@@ -83,7 +80,7 @@ namespace LULU.Apps.Forms
             errorLabel.Text = isValid ? "" : "Student Number or Password is incorrect";
 
             if (isValid)
-                await Navigation.PushAsync(new ClassSelector());
+                await Navigation.PushAsync(new MainMenu(studentNumberEntry.Text));
         }
     }
 }

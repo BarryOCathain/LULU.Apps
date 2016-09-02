@@ -293,6 +293,7 @@
         <xs:element minOccurs="0" name="studentNumber" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="startDate" type="xs:dateTime" />
         <xs:element minOccurs="0" name="endDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="includeAttendedClasses" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -403,6 +404,34 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="GetAllClassRoomsByCampusResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClassRoomByID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="classroomID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClassRoomByIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetClassRoomByIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClassRoomByClassID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="classID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClassRoomByClassIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetClassRoomByClassIDResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

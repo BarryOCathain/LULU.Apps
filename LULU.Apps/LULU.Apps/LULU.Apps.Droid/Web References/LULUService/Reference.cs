@@ -948,23 +948,25 @@ namespace LULU.Apps.Droid.LULUService {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IClass/GetClassesByStudentNumberAndDateRange", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string GetClassesByStudentNumberAndDateRange([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string studentNumber, System.DateTime startDate, [System.Xml.Serialization.XmlIgnoreAttribute()] bool startDateSpecified, System.DateTime endDate, [System.Xml.Serialization.XmlIgnoreAttribute()] bool endDateSpecified) {
+        public string GetClassesByStudentNumberAndDateRange([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string studentNumber, System.DateTime startDate, [System.Xml.Serialization.XmlIgnoreAttribute()] bool startDateSpecified, System.DateTime endDate, [System.Xml.Serialization.XmlIgnoreAttribute()] bool endDateSpecified, bool includeAttendedClasses, [System.Xml.Serialization.XmlIgnoreAttribute()] bool includeAttendedClassesSpecified) {
             object[] results = this.Invoke("GetClassesByStudentNumberAndDateRange", new object[] {
                         studentNumber,
                         startDate,
                         startDateSpecified,
                         endDate,
-                        endDateSpecified});
+                        endDateSpecified,
+                        includeAttendedClasses,
+                        includeAttendedClassesSpecified});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void GetClassesByStudentNumberAndDateRangeAsync(string studentNumber, System.DateTime startDate, bool startDateSpecified, System.DateTime endDate, bool endDateSpecified) {
-            this.GetClassesByStudentNumberAndDateRangeAsync(studentNumber, startDate, startDateSpecified, endDate, endDateSpecified, null);
+        public void GetClassesByStudentNumberAndDateRangeAsync(string studentNumber, System.DateTime startDate, bool startDateSpecified, System.DateTime endDate, bool endDateSpecified, bool includeAttendedClasses, bool includeAttendedClassesSpecified) {
+            this.GetClassesByStudentNumberAndDateRangeAsync(studentNumber, startDate, startDateSpecified, endDate, endDateSpecified, includeAttendedClasses, includeAttendedClassesSpecified, null);
         }
         
         /// <remarks/>
-        public void GetClassesByStudentNumberAndDateRangeAsync(string studentNumber, System.DateTime startDate, bool startDateSpecified, System.DateTime endDate, bool endDateSpecified, object userState) {
+        public void GetClassesByStudentNumberAndDateRangeAsync(string studentNumber, System.DateTime startDate, bool startDateSpecified, System.DateTime endDate, bool endDateSpecified, bool includeAttendedClasses, bool includeAttendedClassesSpecified, object userState) {
             if ((this.GetClassesByStudentNumberAndDateRangeOperationCompleted == null)) {
                 this.GetClassesByStudentNumberAndDateRangeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetClassesByStudentNumberAndDateRangeOperationCompleted);
             }
@@ -973,7 +975,9 @@ namespace LULU.Apps.Droid.LULUService {
                         startDate,
                         startDateSpecified,
                         endDate,
-                        endDateSpecified}, this.GetClassesByStudentNumberAndDateRangeOperationCompleted, userState);
+                        endDateSpecified,
+                        includeAttendedClasses,
+                        includeAttendedClassesSpecified}, this.GetClassesByStudentNumberAndDateRangeOperationCompleted, userState);
         }
         
         private void OnGetClassesByStudentNumberAndDateRangeOperationCompleted(object arg) {
@@ -1095,6 +1099,10 @@ namespace LULU.Apps.Droid.LULUService {
         
         private System.Threading.SendOrPostCallback GetAllClassRoomsByCampusOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetClassRoomByIDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetClassRoomByClassIDOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -1148,6 +1156,12 @@ namespace LULU.Apps.Droid.LULUService {
         
         /// <remarks/>
         public event GetAllClassRoomsByCampusCompletedEventHandler GetAllClassRoomsByCampusCompleted;
+        
+        /// <remarks/>
+        public event GetClassRoomByIDCompletedEventHandler GetClassRoomByIDCompleted;
+        
+        /// <remarks/>
+        public event GetClassRoomByClassIDCompletedEventHandler GetClassRoomByClassIDCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IClassRoom/AddClassRoom", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1310,6 +1324,70 @@ namespace LULU.Apps.Droid.LULUService {
             if ((this.GetAllClassRoomsByCampusCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetAllClassRoomsByCampusCompleted(this, new GetAllClassRoomsByCampusCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IClassRoom/GetClassRoomByID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string GetClassRoomByID(int classroomID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool classroomIDSpecified) {
+            object[] results = this.Invoke("GetClassRoomByID", new object[] {
+                        classroomID,
+                        classroomIDSpecified});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetClassRoomByIDAsync(int classroomID, bool classroomIDSpecified) {
+            this.GetClassRoomByIDAsync(classroomID, classroomIDSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void GetClassRoomByIDAsync(int classroomID, bool classroomIDSpecified, object userState) {
+            if ((this.GetClassRoomByIDOperationCompleted == null)) {
+                this.GetClassRoomByIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetClassRoomByIDOperationCompleted);
+            }
+            this.InvokeAsync("GetClassRoomByID", new object[] {
+                        classroomID,
+                        classroomIDSpecified}, this.GetClassRoomByIDOperationCompleted, userState);
+        }
+        
+        private void OnGetClassRoomByIDOperationCompleted(object arg) {
+            if ((this.GetClassRoomByIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetClassRoomByIDCompleted(this, new GetClassRoomByIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IClassRoom/GetClassRoomByClassID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string GetClassRoomByClassID(int classID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool classIDSpecified) {
+            object[] results = this.Invoke("GetClassRoomByClassID", new object[] {
+                        classID,
+                        classIDSpecified});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetClassRoomByClassIDAsync(int classID, bool classIDSpecified) {
+            this.GetClassRoomByClassIDAsync(classID, classIDSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void GetClassRoomByClassIDAsync(int classID, bool classIDSpecified, object userState) {
+            if ((this.GetClassRoomByClassIDOperationCompleted == null)) {
+                this.GetClassRoomByClassIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetClassRoomByClassIDOperationCompleted);
+            }
+            this.InvokeAsync("GetClassRoomByClassID", new object[] {
+                        classID,
+                        classIDSpecified}, this.GetClassRoomByClassIDOperationCompleted, userState);
+        }
+        
+        private void OnGetClassRoomByClassIDOperationCompleted(object arg) {
+            if ((this.GetClassRoomByClassIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetClassRoomByClassIDCompleted(this, new GetClassRoomByClassIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2669,6 +2747,58 @@ namespace LULU.Apps.Droid.LULUService {
         private object[] results;
         
         internal GetAllClassRoomsByCampusCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    public delegate void GetClassRoomByIDCompletedEventHandler(object sender, GetClassRoomByIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetClassRoomByIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetClassRoomByIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    public delegate void GetClassRoomByClassIDCompletedEventHandler(object sender, GetClassRoomByClassIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetClassRoomByClassIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetClassRoomByClassIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
